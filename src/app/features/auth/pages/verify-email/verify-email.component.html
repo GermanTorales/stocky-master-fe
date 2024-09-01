@@ -1,0 +1,57 @@
+<app-alert-badge />
+
+<!--  -->
+@if(isSubmitting) {
+<app-spinner />
+}
+
+<div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
+  <div class="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl">
+    <div class="mx-auto flex w-full max-w-md flex-col space-y-16">
+      <div class="flex flex-col items-center justify-center text-center space-y-2">
+        <div class="font-semibold text-2xl">
+          <p>Verificacion de correo electronico</p>
+        </div>
+
+        <div class="flex flex-row text-sm font-medium text-gray-400">
+          <p>Hemos enviado un codigo a su email {{ email }}</p>
+        </div>
+      </div>
+
+      <div>
+        <form (ngSubmit)="submitForm()">
+          <div class="flex flex-col space-y-16">
+            <div class="flex flex-row items-center justify-between mx-auto w-full max-w-md">
+              @for(position of [1,2,3,4,5,6];track $index; let i = $index) {
+              <div class="w-16 h-16">
+                <input
+                  [(ngModel)]="digits[i]"
+                  (keyup)="onKeyup($event, i)"
+                  (paste)="onPaste($event)"
+                  class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                  type="text"
+                  pattern="[0-9]*"
+                  maxlength="1"
+                  name="digit{{ i }}"
+                  id="digit{{ i }}"
+                />
+              </div>
+              }
+            </div>
+
+            <div class="flex flex-col space-y-5">
+              <div>
+                <app-primary-button text="VALIDAR CODIGO" />
+              </div>
+
+              <div class="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
+                <p>No recibio el codigo?</p>
+                <span (click)="reSendToken()" class="flex flex-row items-center text-custom-blue-300 cursor-pointer">Volver a enviar</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

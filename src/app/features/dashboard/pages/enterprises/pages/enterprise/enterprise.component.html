@@ -1,0 +1,203 @@
+<div class="fixed inset-0 flex justify-center bg-black bg-opacity-70 z-50 max-h-full">
+  <app-alert-badge />
+
+  @if(isSubmitting) {
+  <app-spinner />
+  }
+
+  <div class="bg-white p-6 rounded-lg shadow-lg w-[50%]">
+    <h2 class="text-xl font-semibold mb-4 text-gray-500">{{ modalTitle }}</h2>
+
+    <div class="border-b border-[1px] border-custom-blue-100 mb-5"></div>
+
+    <form [formGroup]="enterpriseForm" (ngSubmit)="onSave()">
+      <div>
+        <div class="w-full flex flex-row justify-between mb-3">
+          <div class="w-[32%]">
+            <label for="name" class="block text-sm font-semibold text-gray-700">Nombre</label>
+
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4"
+            />
+          </div>
+
+          <div class="w-[32%]">
+            <label for="cuit" class="block text-sm font-semibold text-gray-700">CUIT</label>
+
+            <input
+              id="cuit"
+              type="text"
+              formControlName="cuit"
+              class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4"
+            />
+          </div>
+
+          <div class="w-[32%]">
+            <label for="status" class="block text-sm font-semibold text-gray-700">Estado</label>
+
+            <select id="status" formControlName="status" class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4">
+              @for(status of statusList; track $index) {
+              <option value="{{ status }}">{{ status }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="w-full flex flex-row justify-between mb-3">
+          <div class="w-[49%]">
+            <label for="email" class="block text-sm font-semibold text-gray-700">E-mail</label>
+
+            <input
+              id="email"
+              type="text"
+              formControlName="email"
+              class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4"
+            />
+          </div>
+
+          <div class="w-[49%]">
+            <label for="contact_number" class="block text-sm font-semibold text-gray-700">Telefono</label>
+
+            <input
+              id="contact_number"
+              type="text"
+              formControlName="contact_number"
+              class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4"
+            />
+          </div>
+        </div>
+
+        <div class="w-full flex flex-row justify-between mb-3">
+          <div class="w-[49%]">
+            <label for="address" class="block text-sm font-semibold text-gray-700">Direccion</label>
+
+            <input
+              id="address"
+              type="text"
+              formControlName="address"
+              class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4"
+            />
+          </div>
+
+          <div class="w-[49%]">
+            <label for="city" class="block text-sm font-semibold text-gray-700">Ciudad</label>
+
+            <input
+              id="city"
+              type="text"
+              formControlName="city"
+              class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4"
+            />
+          </div>
+        </div>
+
+        <div class="w-full flex flex-row justify-between mb-3">
+          <div class="w-[49%]">
+            <label for="state" class="block text-sm font-semibold text-gray-700">Provincia</label>
+
+            <input
+              id="state"
+              type="text"
+              formControlName="state"
+              class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4"
+            />
+          </div>
+
+          <div class="w-[49%]">
+            <label for="zip" class="block text-sm font-semibold text-gray-700">Codigo Postal</label>
+
+            <input
+              id="zip"
+              type="text"
+              formControlName="zip"
+              class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="my-1 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+        <div class="align-middle inline-block w-full py-4 overflow-hidden">
+          <div class="flex justify-between">
+            <div class="inline-flex border rounded w-7/12 px-2 lg:px-6 h-12 bg-transparent">
+              <div class="flex flex-wrap items-stretch w-full h-full mb-6 relative">
+                <div class="flex">
+                  <span
+                    class="flex items-center leading-normal bg-transparent rounded rounded-r-none border border-r-0 border-none lg:px-3 py-2 whitespace-no-wrap text-grey-dark text-sm"
+                  >
+                    <svg width="18" height="18" class="w-4 lg:w-auto" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M8.11086 15.2217C12.0381 15.2217 15.2217 12.0381 15.2217 8.11086C15.2217 4.18364 12.0381 1 8.11086 1C4.18364 1 1 4.18364 1 8.11086C1 12.0381 4.18364 15.2217 8.11086 15.2217Z"
+                        stroke="#455A64"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path d="M16.9993 16.9993L13.1328 13.1328" stroke="#455A64" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </div>
+
+                <input
+                  type="text"
+                  class="flex-shrink flex-grow flex-auto leading-normal tracking-wide w-px flex-1 border border-none border-l-0 rounded rounded-l-none px-3 relative focus:outline-none text-xxs lg:text-xs text-gray-500 font-thin"
+                  placeholder="Search"
+                />
+              </div>
+
+              @if(enterprise) { @for(user of enterprise.users;track user.id) {
+              <span>USER</span>
+              } }
+            </div>
+
+            <button
+              type="button"
+              class="px-5 py-2 border-blue-500 border text-white rounded transition duration-300 bg-custom-blue-500 hover:bg-custom-blue-300 hover:text-white focus:outline-none"
+            >
+              AGREGAR USUARIO
+            </button>
+          </div>
+        </div>
+
+        <div class="h-[30vh] overflow-y-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr>
+                <th class="w-[15%] px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-custom-blue-500 tracking-wider">Nombre</th>
+                <th class="w-[10%] px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-custom-blue-500 tracking-wider">Email</th>
+                <th class="w-[15%] px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-custom-blue-500 tracking-wider">Estado</th>
+                <th class="w-[5%] px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-custom-blue-500 tracking-wider">Role</th>
+              </tr>
+            </thead>
+
+            <tbody class="bg-white">
+              @for(user of users;track user.id) {
+              <tr>
+                <td class="px-6 py-4 whitespace-no-wrap border-b text-custom-blue-900 border-gray-500 text-md leading-5">
+                  {{ user.first_name }} {{ user.last_name }}
+                </td>
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b text-custom-blue-900 border-gray-500 text-md leading-5">{{ user.email }}</td>
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b text-custom-blue-900 border-gray-500 text-md leading-5">{{ user.status }}</td>
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b text-custom-blue-900 border-gray-500 text-md leading-5">{{ user.role.name }}</td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-4 flex justify-end">
+        <button type="button" (click)="onClose()" class="bg-custom-yellow-300 hover:bg-custom-yellow-700 text-white py-2 px-4 rounded-md mr-2">
+          Cerrar
+        </button>
+
+        <app-primary-button [text]="submitBtnText" />
+      </div>
+    </form>
+  </div>
+</div>

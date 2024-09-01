@@ -1,0 +1,49 @@
+<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 max-h-full">
+  <app-alert-badge />
+
+  @if(isSubmitting) {
+  <app-spinner />
+  }
+
+  <div class="bg-white p-6 rounded-lg shadow-lg w-[50%]">
+    <h2 class="text-xl font-semibold mb-4 text-gray-500">{{ modalTile }}</h2>
+
+    <div class="border-b border-[1px] border-custom-blue-100 mb-5"></div>
+
+    <form [formGroup]="permissionForm" (ngSubmit)="onSave()">
+      <div>
+        <div class="w-full flex flex-row justify-between">
+          <div class="w-[49%]">
+            <label for="first_name" class="block text-sm font-semibold text-gray-700">Nombre del permiso</label>
+
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4"
+            />
+          </div>
+
+          <div class="w-[49%]">
+            <label for="first_name" class="block text-sm font-semibold text-gray-700">Descripcion</label>
+
+            <input
+              id="description"
+              type="text"
+              formControlName="description"
+              class="mt-2 block w-full bg-custom-blue-50 border-gray-300 rounded-md shadow-sm h-10 pl-4"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 flex justify-end">
+        <button type="button" (click)="onClose()" class="bg-custom-yellow-300 hover:bg-custom-yellow-700 text-white py-2 px-4 rounded-md mr-2">
+          Cerrar
+        </button>
+
+        <app-primary-button [text]="submitBtnText" />
+      </div>
+    </form>
+  </div>
+</div>
